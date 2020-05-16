@@ -16,7 +16,7 @@ export const SignUpPage = () => {
 		setLoading(true)
 		
 		registerAccount(values).then(res => {
-			message[res.status](res.message) 
+			message[res.status](res.message, 10) 
 			router.push(
 				'/login', 
 				{username: values.username, password: values.password}

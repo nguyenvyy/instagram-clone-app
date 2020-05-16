@@ -22,19 +22,23 @@ export const registerAccount = async ({email, username, fullName, password}) => 
 }
 export const login = async (username, password) => {
 	try {
-		await axios({
+		const response = await axios({
 			url: 'auth/login',
 			data: {
 				username,
 				password
 			}
         });
+        const {token, user} = response.data
+        if(!token) throw new Error()
 		return {
 				status: status.success, 
-				message: messages.register.success,
-				
+				message: messages.login.success,
+                token,
+                user
 			}
     } catch (error) {
-        throw new RequestException(status.error, messages.register.failed)
+        const {message = messages.login.failed} = (error.response && error.response.data) || {} 
+        throw new RequestException(status.error, message)
     }
 };

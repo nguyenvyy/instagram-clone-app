@@ -6,7 +6,8 @@ export const DataContext = createContext()
 export const initState = {
     auth: {
         token: null,
-        user: null
+        user: null,
+        isAuthenticated: false
     }
 }
 

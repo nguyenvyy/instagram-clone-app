@@ -5,7 +5,7 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case types.ADD_TOKEN: {
             const auth = {...state.auth, token: action.payload}
-            return {...state, auth}
+            return {...state, auth, isAuthenticated: true}
         }
         case types.ADD_USER: {
             const auth = {...state.auth, user: action.payload}

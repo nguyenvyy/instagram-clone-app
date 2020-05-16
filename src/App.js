@@ -4,6 +4,7 @@ import './App.css';
 import 'antd/dist/antd.css';
 import { DataProvider } from './store/DataProvider';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+import { SignInPage } from './pages/SignInPage/SignInPage';
 
 
 
@@ -19,6 +20,9 @@ function App() {
 					<Switch>
 						<Route path="/sign-up">
 							<SignUpPage />
+						</Route>
+						<Route path="/sign-in">
+							<SignInPage />
 						</Route>
 					</Switch>
 				</DataProvider>

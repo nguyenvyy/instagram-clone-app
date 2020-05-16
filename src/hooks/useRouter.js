@@ -18,6 +18,7 @@ export function useRouter() {
 				push: history.push,
 				replace: history.replace,
 				pathname: location.pathname,
+				state:location.state,
 				// Merge params and parsed query string into single "query" object
 				// so that they can be used interchangeably.
 				query: {

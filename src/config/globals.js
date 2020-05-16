@@ -12,7 +12,11 @@ export const messages = {
     register: {
         success: 'Đăng ký tài khoản thành công',
         failed: 'Đăng ký tài khoản thất bại',
-    }
+	},
+	login: {
+		success: 'Đăng nhập thành công',
+		failed: 'Tên người dùng hoặc mật khẩu không chính xác'
+	}
 }
 
 export default {
