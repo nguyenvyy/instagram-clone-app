@@ -1,0 +1,61 @@
+.sign-up-page {
+    background: #fafafa;
+    width: 100vw;
+    height: 100vh;
+}
+.sign-up-page .card {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    width: 350px;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.sign-up-page .card:last-child {
+    height: 70px;
+}
+.card .title {
+    background-image: url('../../assets/images/instagram-icons.png');
+    background-repeat: no-repeat;
+    background-position: -98px 0;
+    height: 51px;
+    width: 175px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 22px auto 12px;
+}
+
+.sign-up-form {
+    padding: 0 40px;
+}
+.sign-up-form .form-title {
+    color: #8e8e8e;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+}
+.sign-up-form .form-input {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+.sign-up-form .form-button {
+    border-radius: 4px;
+    height: 35px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.sign-up-form .terms {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.sign-up-form .terms a {
+    color: #8e8e8e;
+    font-weight: 600;
+    display: inline;
+}
