@@ -12,6 +12,9 @@
     text-align: center;
 }
 
+.sign-in-page .card:last-child {
+    height: 70px;
+}
 
 .card .title {
     background-image: url('../../assets/images/instagram-icons.png');
