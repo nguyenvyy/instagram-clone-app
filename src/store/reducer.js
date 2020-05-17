@@ -4,8 +4,8 @@ import { initState } from "./DataProvider"
 export const reducer = (state, action) => {
     switch (action.type) {
         case types.ADD_TOKEN: {
-            const auth = {...state.auth, token: action.payload}
-            return {...state, auth, isAuthenticated: true}
+            const auth = {...state.auth, token: action.payload, isAuthenticated: true}
+            return {...state, auth}
         }
         case types.ADD_USER: {
             const auth = {...state.auth, user: action.payload}
