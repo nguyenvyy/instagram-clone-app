@@ -1,7 +1,7 @@
 import {useContext, useMemo} from 'react'
 import { DataContext } from '../store/DataProvider'
 
-export const useState = () => {
+export const useStore = () => {
     const {state} = useContext(DataContext)
     
     return useMemo(() => {

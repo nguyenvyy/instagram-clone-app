@@ -17,6 +17,18 @@ export const messages = {
 	login: {
 		success: 'Đăng nhập thành công',
 		failed: 'Tên người dùng hoặc mật khẩu không chính xác'
+	},
+	upload_img: {
+		validate: {
+			type: 'Ảnh không hợp lệ',
+			size: size => `Ảnh phải nhỏ hơn ${size}`
+		},
+	},
+	post: {
+		add: {
+			success: 'Đăng bài thành công',
+			failed: 'Đăng bài thất bại'
+		}
 	}
 }
 

@@ -5,8 +5,8 @@ import 'antd/dist/antd.css';
 import { DataProvider } from './store/DataProvider';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SignInPage } from './pages/SignInPage/SignInPage';
-
-
+import { Header } from './components/Header/Header';
+import { RouteWithAuth } from './custom-routes/RouteWithAuth';
 
 function App() {
 	useEffect(() => {
@@ -16,7 +16,6 @@ function App() {
 		<div className="App">
 			<Router>
 				<DataProvider>
-					
 					<Switch>
 						<Route path="/sign-up">
 							<SignUpPage />
@@ -24,6 +23,17 @@ function App() {
 						<Route path="/sign-in">
 							<SignInPage />
 						</Route>
+						<RouteWithAuth path="/">
+							<Header />
+							<Switch>
+								<Route exact path="/">
+									xxxx
+								</Route>
+								<Route path="/:id">
+									profile
+								</Route>
+							</Switch>
+						</RouteWithAuth>
 					</Switch>
 				</DataProvider>
 			</Router>

@@ -1,10 +1,8 @@
-* {
-	box-sizing: border-box;
-}
+
 
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont,"Roboto",sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 14px;
@@ -17,6 +15,7 @@ code {
 .container {
 	width: 80%;
 	margin: 0 auto;
+	padding: 0 20px;
 }
 
 .d-flex {
@@ -48,89 +47,19 @@ code {
 .flex-column {
 	flex-direction: column;
 }
+.pointer {
+	cursor: pointer;
+}
+/* media */
+@media only screen and (max-width: 900px) {
+	.container {
+		width: 100%;
+	}
+}
 
 /* reset */
-a,
-abbr,
-acronym,
-address,
-applet,
-article,
-aside,
-audio,
-b,
-big,
-blockquote,
-body,
-canvas,
-caption,
-center,
-cite,
-code,
-dd,
-del,
-details,
-dfn,
-div,
-dl,
-dt,
-em,
-embed,
-fieldset,
-figcaption,
-figure,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-hgroup,
-html,
-i,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-mark,
-menu,
-nav,
-object,
-ol,
-output,
-p,
-pre,
-q,
-ruby,
-s,
-samp,
-section,
-small,
-span,
-strike,
-strong,
-sub,
-summary,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-time,
-tr,
-tt,
-u,
-ul,
-var,
-video {
+* {
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	border: 0;
