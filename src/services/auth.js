@@ -23,7 +23,8 @@ export const registerAccount = async ({email, username, fullName, password}) => 
 export const login = async (username, password) => {
 	try {
 		const response = await axios({
-			url: 'auth/login',
+            url: 'auth/login',
+            method: 'post',
 			data: {
 				username,
 				password
