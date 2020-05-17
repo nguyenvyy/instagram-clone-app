@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { login } from '../../services/auth';
 import { useDispatch } from '../../hooks/useDispatch';
 import { addToken, addUser } from '../../store/actions';
-
+import { CookieService } from '../../services/storage';
+import { env } from '../../config/globals';
 export const SignInPage = () => {
 	const dispatch = useDispatch();
 	const router = useRouter();
@@ -33,6 +34,7 @@ export const SignInPage = () => {
 				message[res.status](res.message);
 				dispatch(addToken(token));
 				dispatch(addUser(user));
+				CookieService.setCookie(env.COOKIE_KEY, token)
 				let to = '/'
 				if (router.state && router.state.from) {
 					to = router.state.from
