@@ -16,9 +16,9 @@ export const SignUpPage = () => {
 		setLoading(true)
 		
 		registerAccount(values).then(res => {
-			message[res.status](res.message, 10) 
+			message[res.status](res.message) 
 			router.push(
-				'/login', 
+				'/sign-in', 
 				{username: values.username, password: values.password}
 				)
 		}).catch(error => {
@@ -89,7 +89,7 @@ export const SignUpPage = () => {
 			</div>
 			<div className="card d-flex-center">
 				<span>
-					Bạn có tài khoản? <Link to="/login">Đăng nhập</Link>
+					Bạn đã có tài khoản? <Link to="/sign-in">Đăng nhập</Link>
 				</span>
 			</div>
 		</div>
