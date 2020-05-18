@@ -1,6 +1,15 @@
 import {useContext, useCallback} from 'react'
 import { DataContext } from '../store/DataProvider'
 
+export const dispatchLogger = (dispatch, onTracking = true) => action => {
+    if(onTracking) {
+        const {type, payload} = action
+                console.log(`Action: %c${type}`, "color:green")
+                console.log(`Payload: `, payload)
+    }
+    return dispatch(action)
+}
+
 export const useDispatch = (onTracking = true) => {
     const {dispatch} = useContext(DataContext)
     return useCallback((action) => {
