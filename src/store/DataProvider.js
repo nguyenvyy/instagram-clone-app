@@ -12,6 +12,15 @@ export const initState = {
         user: null,
         isAuthenticated: false,
         initLoading: true
+    },
+    posts: {
+        loading: false,
+        pagination: {
+            length: 0,
+            skip: 0,
+            limit: 5,
+        },
+        items: []
     }
 }
 
