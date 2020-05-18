@@ -1,12 +1,12 @@
 import { axios } from '../config/axios';
 import { status, messages } from "../config/globals"
 import { RequestException } from "../utils"
-
+const pathname = '/posts'
 export const sendNewPost = async ({byUser, caption, imageUrl}, token, user) => {
     try {
         const res = await axios({
             method: 'post',
-            url: '/posts',
+            url: pathname,
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -22,3 +22,12 @@ export const sendNewPost = async ({byUser, caption, imageUrl}, token, user) => {
         throw new RequestException(status.error, messages.post.add.failed)
     } 
 } 
+
+export const getLengthPosts = (token) => axios({
+    method: 'get',
+    url: `${pathname}/length`,
+    headers: {
+        Authorization: `Bearer ${token}`        
+    }
+}).then(res => res.data.length)
+.catch(error => 0)
