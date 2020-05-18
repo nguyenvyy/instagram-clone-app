@@ -5,6 +5,8 @@ import { CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { checkIsImage, getBase64 } from '../../utils';
 import { messages } from '../../config/globals';
 import { sendNewPost } from '../../services/post';
+import { useDispatch } from '../../hooks/useDispatch'
+import { addPosts } from '../../store/actions';
 const beforeUpload = (file) => {
 	const isJpgOrPng = checkIsImage(file.type);
 	if (!isJpgOrPng) {
@@ -19,10 +21,11 @@ const beforeUpload = (file) => {
 
 
 export const AddPostModal = ({ close, user, token }) => {
+	const dispatch = useDispatch()
 	const [ post, setPost ] = useState({
 		byUser: '',
 		caption: '',
-        imageUrl: '',
+        imageUrl: 'https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png',
 	});
 	const isValidPost = useMemo(() => {
 		const { byUser, caption, imageUrl } = post
@@ -60,6 +63,7 @@ export const AddPostModal = ({ close, user, token }) => {
 		.then(res => {
 			message[res.status](res.message)
 			setLoading({...loading, request: false})
+			dispatch(addPosts([res.post]))
 			close()
 		}).catch(err => {
 			setLoading({...loading, request: false})
