@@ -1,0 +1,54 @@
+.add-post-modal {
+    position: fixed;
+    z-index: 1000;
+    top: 0;right: 0;bottom: 0; left: 0;
+    background: hsla(0, 0%, 0%, 0.6);
+}
+
+.add-post-modal .card {
+    background: #fff;
+    width: 500px;
+    
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #dddfe2;
+}
+.add-post-modal .card > div {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.add-post-modal .upload-img {
+    padding: 20px 0;
+}
+.add-post-modal .ant-upload {
+    width: auto;
+    height: 100%;
+    max-width: 100% ;
+}
+.add-post-modal .ant-upload-picture-card-wrapper {
+    width: auto;
+}
+.add-post-modal .ant-upload.ant-upload-select-picture-card {
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+.avatar-uploader img {
+    max-height: 300px;
+}
+
+.add-post-modal .caption-area {
+    margin-bottom: 20px;
+}
+
+.add-post-modal .card__title {
+    background: #fafafa;
+    border-bottom: 1px solid #dbdbdb;
+    color: #4b4f56;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.add-post-modal .card__footer {
+    padding-bottom: 10px;
+}
+
