@@ -1,10 +1,37 @@
 .notification-list {
-    background: #fff;
-    box-shadow: 0 0 5px 1px rgba(0,0,0,.0975);
-    border-radius: 6px;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
-    min-height: 60px;
+    min-height: 50px;
+}
+
+.empty-notification {
+    padding: 10px;
+}
+.notification-item {
+    padding: 5px;
+    font-size: 0.8em;
+}
+.notification-item img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.notification-item .notification-info {
+    flex-grow: 1;
+}
+.notification-item .by-username {
+    font-weight: 700;
+}
+
+.notification-item .time {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.notification-info {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.notification-list .notification-item:last-child .notification-info {
+    border-bottom: none;
 }

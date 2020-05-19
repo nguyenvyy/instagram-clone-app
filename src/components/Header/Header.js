@@ -64,10 +64,12 @@ export const Header = () => {
 							</div>
 						</li>
 						<li>
-							<div className="d-flex-center pointer notification">
+							<div className="d-flex-center  notification">
 								{currentPath === '/notifications' ? (
 									<>
-										<HeartFilled className="menu-icon" />
+										<HeartFilled 
+										onClick={() => onChangePath(router.pathname)}
+										className="menu-icon pointer"  />
 										<div className="notification-frame">
 											<NotificationFrame />
 										</div>
@@ -75,7 +77,7 @@ export const Header = () => {
 								) : (
 									<HeartOutlined
 									onClick={() => onChangePath('/notifications')}
-									className="menu-icon" />
+									className="menu-icon pointer" />
 								)}
 							</div>
 						</li>

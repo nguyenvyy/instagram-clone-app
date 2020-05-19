@@ -10,9 +10,9 @@ export const FullLoading = () => (
     </div>
 )
 
-export const FitLoading = ({fontSize, color}) => (
+export const FitLoading = ({fontSize, color, width = '100%',height = '100%'}) => (
     <div className="d-flex-center" style={{
-        width: '100%', height: '100%',
+        width, height,
         fontSize: fontSize, color
         }}>
          <SyncOutlined spin />

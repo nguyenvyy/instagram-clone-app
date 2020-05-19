@@ -52,6 +52,10 @@ export const messages = {
 	notification: {
 		get: {
 			failed: 'Tải thông báo thất bại!'
+		},
+		action: {
+			like: 'thích',
+			comment: 'bình luận'
 		}
 	}
 }

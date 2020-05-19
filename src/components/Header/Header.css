@@ -1,50 +1,59 @@
 header.header {
-    background: #fff;
-    height: 8vh;
-    border-bottom: 1px solid #dbdbdb;
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
+	background: #fff;
+	height: 8vh;
+	border-bottom: 1px solid #dbdbdb;
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
 }
 .header > div {
-    height: 100%;
+	height: 100%;
 }
 .header .logo {
-    height: 30px;
-    width: 105px;
+	height: 30px;
+	width: 105px;
 }
 
 .header .menu ul {
-    list-style-type: none;
-    margin-bottom: 0;
+	list-style-type: none;
+	margin-bottom: 0;
 }
 
 .menu ul li {
-    margin-left: 20px;
+	margin-left: 20px;
 }
 
 .menu .menu-icon {
-    color: #000;
-    font-size: 20px;
+	color: #000;
+	font-size: 20px;
 }
 
 .menu .user-icon {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    padding: 1px;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	padding: 1px;
 }
 
 .menu .user-icon.active {
-    border: 1px solid #000;
+	border: 1px solid #000;
 }
 
 .menu .notification {
-    position: relative;
+	position: relative;
 }
 
 .menu .notification .notification-frame {
-    position: absolute;
+	position: absolute;
+	top: 5vh;
+	right: -50px;
+	background: #fff;
+	box-shadow: 0 0 5px 1px rgba(0, 0, 0, .0975);
+	border-radius: 4px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 300px;
+    max-height: 300px;
 }

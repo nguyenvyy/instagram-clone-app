@@ -2,22 +2,12 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './AddPostModal.css';
 import { Button, message, Input, Upload } from 'antd';
 import { CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { checkIsImage, getBase64 } from '../../utils';
+import { checkIsImage, getBase64, beforeUpload } from '../../utils';
 import { messages, status } from '../../config/globals';
 import { sendNewPost } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch'
 import { addPosts } from '../../store/actions';
-const beforeUpload = (file) => {
-	const isJpgOrPng = checkIsImage(file.type);
-	if (!isJpgOrPng) {
-		message.error(messages.upload_img.validate.type);
-	}
-	const isLt2M = file.size / 1024 / 1024 < 2;
-	if (!isLt2M) {
-		message.error(messages.upload_img.validate.size('2MB'));
-	}
-	return isJpgOrPng && isLt2M;
-};
+
 
 
 export const AddPostModal = ({ close, user, token }) => {
@@ -95,7 +85,7 @@ export const AddPostModal = ({ close, user, token }) => {
                             className="avatar-uploader"
                             showUploadList={false}
                             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                            beforeUpload={beforeUpload}
+                            beforeUpload={(file) => beforeUpload(file, message)}
                             onChange={handleChangeImageUrl}
                         >
                             {post.imageUrl ? (
