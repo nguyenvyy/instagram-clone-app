@@ -4,9 +4,9 @@ import { useStore } from '../../hooks/useStore';
 import { FitLoading } from '../../components/common/FitLoading';
 import { Alert, message } from 'antd';
 import { Post } from '../../components/Post/Post';
-import { getPosts } from '../../services/post';
+import { getPosts, getLengthPosts } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch';
-import { startLoadPost, endLoadPost, addPosts } from '../../store/actions';
+import { startLoadPost, endLoadPost, addPosts, setLength } from '../../store/actions';
 import { status, messages } from '../../config/globals';
 import { debounce } from '../../utils';
 export const HomePage = () => {
@@ -36,6 +36,28 @@ export const HomePage = () => {
 			};
 		},
 		[ onScrollToBottom ]
+	);
+
+		useEffect(
+		() => {
+			 getLengthPosts(token).then((length) => {
+                dispatch(setLength(length));
+            });
+			// start load posts
+			dispatch(startLoadPost());
+			// get posts
+			getPosts(skip, limit, token)
+				.then((posts) => {
+					dispatch(addPosts(posts));
+				})
+				.catch((error) => message[error.status || status.error](error.message))
+				.finally((_) => {
+					// end load
+					dispatch(endLoadPost());
+				});
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[]
 	);
 
 	const infiniteLoadPost = useCallback(

@@ -12,11 +12,11 @@ export const status = {
 
 export const messages = {
 	action: {
-		failed: 'Hành động thất bại'
+		failed: 'Hành động thất bại!'
 	},
     register: {
         success: 'Đăng ký tài khoản thành công',
-        failed: 'Đăng ký tài khoản thất bại',
+        failed: 'Đăng ký tài khoản thất bại!',
 	},
 	login: {
 		success: 'Đăng nhập thành công',
@@ -31,22 +31,27 @@ export const messages = {
 	post: {
 		add: {
 			success: 'Đăng bài thành công',
-			failed: 'Đăng bài thất bại'
+			failed: 'Đăng bài thất bại!'
 		},
 		get: {
 			success: 'Tải bài thành công',
-			failed: 'Tải bài thất bại'
+			failed: 'Tải bài thất bại!'
 		},
 		like: {
-			failed: 'Like bài thất bại'
+			failed: 'Like bài thất bại!'
 		}
 	},
 	comment: {
 		add: {
-			false: 'Bình luận thất bại'
+			false: 'Bình luận thất bại!'
 		},
 		get: {
-			failed: 'Tải bình luận thất bại'
+			failed: 'Tải bình luận thất bại!'
+		}
+	},
+	notification: {
+		get: {
+			failed: 'Tải thông báo thất bại!'
 		}
 	}
 }

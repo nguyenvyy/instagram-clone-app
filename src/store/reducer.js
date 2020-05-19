@@ -46,11 +46,14 @@ export const reducer = (state, action) => {
         case types.ADD_POSTS: {
             const {posts, isLocal} = action.payload
             const {items, pagination, loading, initLoading} = state.posts
-            const newItems = posts.concat(items)
             let { skip, limit, length } = pagination
+            let newItems 
             skip += posts.length 
             if(isLocal) {
                 length += posts.length
+                newItems =  posts.concat(items)
+            } else {
+                newItems = items.concat(posts)
             }
             return {...state, posts: {
                 items: newItems,

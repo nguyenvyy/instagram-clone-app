@@ -6,7 +6,7 @@ header.header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 10;
 }
 .header > div {
     height: 100%;
@@ -39,4 +39,12 @@ header.header {
 
 .menu .user-icon.active {
     border: 1px solid #000;
+}
+
+.menu .notification {
+    position: relative;
+}
+
+.menu .notification .notification-frame {
+    position: absolute;
 }

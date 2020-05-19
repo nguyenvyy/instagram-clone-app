@@ -15,6 +15,7 @@ import {
 import { useRouter } from '../../hooks/useRouter';
 import { AddPostModal } from '../AddPostModal/AddPostModal';
 import { useStore } from '../../hooks/useStore';
+import { NotificationFrame } from '../NotificationFrame/NotificationFrame';
 
 export const Header = () => {
 	const {auth: {user, token}} = useStore()
@@ -63,9 +64,14 @@ export const Header = () => {
 							</div>
 						</li>
 						<li>
-							<div className="d-flex-center pointer">
+							<div className="d-flex-center pointer notification">
 								{currentPath === '/notifications' ? (
-									<HeartFilled className="menu-icon" />
+									<>
+										<HeartFilled className="menu-icon" />
+										<div className="notification-frame">
+											<NotificationFrame />
+										</div>
+									</>
 								) : (
 									<HeartOutlined
 									onClick={() => onChangePath('/notifications')}
