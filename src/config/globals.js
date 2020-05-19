@@ -3,6 +3,7 @@ export const env = {
 	SERVER_URL: process.env.REACT_APP_SERVER_URL || 'http://localhost:8080/api/v1',
 	COOKIE_KEY: process.env.REACT_APP_COOKIE_KEY || 'instagram-cookie'
 };
+
 export const status = {
 	error: 'error',
 	success: 'success',
@@ -10,6 +11,9 @@ export const status = {
 };
 
 export const messages = {
+	action: {
+		failed: 'Hành động thất bại'
+	},
     register: {
         success: 'Đăng ký tài khoản thành công',
         failed: 'Đăng ký tài khoản thất bại',
@@ -28,6 +32,21 @@ export const messages = {
 		add: {
 			success: 'Đăng bài thành công',
 			failed: 'Đăng bài thất bại'
+		},
+		get: {
+			success: 'Tải bài thành công',
+			failed: 'Tải bài thất bại'
+		},
+		like: {
+			failed: 'Like bài thất bại'
+		}
+	},
+	comment: {
+		add: {
+			false: 'Bình luận thất bại'
+		},
+		get: {
+			failed: 'Tải bình luận thất bại'
 		}
 	}
 }

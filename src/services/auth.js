@@ -1,12 +1,12 @@
 import { axios } from '../config/axios';
 import { status, messages } from "../config/globals"
 import { RequestException } from "../utils"
-
+const pathname = '/auth'
 export const registerAccount = async ({email, username, fullName, password}) => {
     try {
         await axios({
             method: 'post',
-            url: '/auth/register',
+            url: `${pathname}/register`,
             data: {
                 email,
                 username,
@@ -23,7 +23,7 @@ export const registerAccount = async ({email, username, fullName, password}) => 
 export const login = async (username, password) => {
 	try {
 		const response = await axios({
-            url: 'auth/login',
+            url: `${pathname}/login`,
             method: 'post',
 			data: {
 				username,

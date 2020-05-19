@@ -1,0 +1,76 @@
+.post {
+	max-width: 600px;
+	width: 100%;
+}
+.post .card {
+	background: #fff;
+	border-radius: 3px;
+	border: 0.7px solid #dbdbdb;
+	overflow: hidden;
+	width: 100%;
+}
+.post .card__header {
+	padding: 10px;
+    font-size: 20px;
+    border-bottom: 0.5px solid #dbdbdb;
+
+}
+.post .card__header .time {
+	font-size: 0.55em;
+	margin-right: 10px;
+	font-style: italic;
+	text-transform: capitalize;
+}
+.post .author-info {
+	color: #262626;
+}
+.post .author-info > * {
+	margin-right: 5px;
+}
+.post .author-info .author-name {
+	font-weight: 600;
+}
+.post .author-info img {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 32px;
+	height: 32px;
+}
+
+.post .card__img img {
+	max-width: 100%;
+	height: auto;
+	max-height: 80vh;
+}
+
+.post .card__content {
+    padding: 0 16px;
+    border-top: 0.5px solid #dbdbdb;
+
+}
+
+.like-bar .like-icon {
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.like-bar .num-likes {
+	font-weight: 700;
+	font-size: 0.8em;
+}
+.post .caption span {
+	font-weight: 500;
+	margin-right: 5px;
+	color: #262626;
+}
+
+.post .card__footer {
+	border-top: 0.1px solid #dbdbdb;
+}
+
+.comment-area .comment-count {
+	color: #00376b;
+	font-size: 0.9em;
+	display: inline-block;
+	margin-bottom: 5px;
+}

@@ -31,3 +31,39 @@ export const getLengthPosts = (token) => axios({
     }
 }).then(res => res.data.length)
 .catch(error => 0)
+
+export const getPosts = (skip, limit, token) => axios({
+    method: 'get',
+    url: pathname,
+    headers: {
+        Authorization : `Bearer ${token}`
+    },
+    params: {
+        skip,
+        limit
+    }
+}).then(res => res.data.posts)
+.catch(error => {throw new RequestException(status.error, messages.post.get.failed)})
+
+export const likePost = (_id, likedUserId, token) => axios({
+    method: 'patch',
+    url: `${pathname}/${_id}`,
+    headers: {
+        Authorization : `Bearer ${token}`
+    },
+    data: {
+        likedUserId
+    }
+}).then(res => res.data.post)
+.catch(_ => {throw new RequestException(status.error, messages.post.like.failed)})
+
+
+export const getCommentsOfPost = (skip, limit, postId, token) => axios({
+    method: 'get',
+    url: `${pathname}/${postId}/comments`,
+    headers: {
+        Authorization: `Bearer ${token}`
+    },
+    params: {skip, limit}
+}).then(res => res.data.comments)
+.catch(_ => {throw new RequestException(status.error, messages.comment.get.failed)})

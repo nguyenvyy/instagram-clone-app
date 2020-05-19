@@ -39,22 +39,38 @@ export const reducer = (state, action) => {
                 pagination: {
                     ...state.posts.pagination,
                     length
-                }
+                },
+                initLoading: false
             }}
         }
         case types.ADD_POSTS: {
-            const posts = action.payload
-            const {items, pagination, loading} = state.posts
-            const skip = pagination.skip + posts.length 
+            const {posts, isLocal} = action.payload
+            const {items, pagination, loading, initLoading} = state.posts
             const newItems = posts.concat(items)
+            let { skip, limit, length } = pagination
+            skip += posts.length 
+            if(isLocal) {
+                length += posts.length
+            }
             return {...state, posts: {
                 items: newItems,
                 pagination: {
-                    ...pagination,
-                    skip
+                    skip,
+                    length,
+                    limit
                 },
-                loading
+                loading,
+                initLoading
             }}
+        }
+        case types.SET_LIKED_POST: {
+            let {index, _id, likedPost} = action.payload
+            if(typeof index !== 'number') {
+                index = state.postItems.findIndex(post => post._id === _id)
+            }
+            const postItems = state.posts.items.slice()
+            postItems.splice(index, 1, likedPost)
+            return {...state, posts: {...state.posts, items: postItems}}
         }
         case types.CLEAR_POSTS: {
             return {...state, posts: initState.posts}

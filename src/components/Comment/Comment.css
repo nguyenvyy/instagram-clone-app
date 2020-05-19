@@ -1,0 +1,26 @@
+.comment {
+    margin-bottom: 5px;
+}
+
+.comment img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.comment .author-name {
+    font-weight: 500;
+    margin-right: 5px;
+    color: #262626;
+}
+.comment p {
+    word-break: break-word;
+    padding-top: 5px;
+    margin-bottom: 2px;
+}
+
+.comment .time {
+    font-size: 0.65em;
+    font-style: italic;
+}

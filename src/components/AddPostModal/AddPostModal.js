@@ -3,7 +3,7 @@ import './AddPostModal.css';
 import { Button, message, Input, Upload } from 'antd';
 import { CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { checkIsImage, getBase64 } from '../../utils';
-import { messages } from '../../config/globals';
+import { messages, status } from '../../config/globals';
 import { sendNewPost } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch'
 import { addPosts } from '../../store/actions';
@@ -25,7 +25,7 @@ export const AddPostModal = ({ close, user, token }) => {
 	const [ post, setPost ] = useState({
 		byUser: '',
 		caption: '',
-        imageUrl: 'https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png',
+        imageUrl: '',
 	});
 	const isValidPost = useMemo(() => {
 		const { byUser, caption, imageUrl } = post
@@ -63,11 +63,11 @@ export const AddPostModal = ({ close, user, token }) => {
 		.then(res => {
 			message[res.status](res.message)
 			setLoading({...loading, request: false})
-			dispatch(addPosts([res.post]))
+			dispatch(addPosts([res.post], true))
 			close()
-		}).catch(err => {
+		}).catch(({ status: statusError = status.error, message: messageError = messages.action.failed }) => {
 			setLoading({...loading, request: false})
-			message[err.status](err.message)
+			message[statusError](messageError)
 		})
     }
 

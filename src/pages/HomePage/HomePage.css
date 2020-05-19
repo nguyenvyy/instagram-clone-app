@@ -1,0 +1,15 @@
+.home-page .loading-area {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.post-list {
+    margin-top: 20px;
+}
+.post-list .list-item {
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.post-list .list-item:last-child {
+    padding-bottom: 0;
+}

@@ -7,12 +7,14 @@ import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SignInPage } from './pages/SignInPage/SignInPage';
 import { Header } from './components/Header/Header';
 import { RouteWithAuth } from './custom-routes/RouteWithAuth';
+import { HomePage } from './pages/HomePage/HomePage';
+import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 
 function App() {
 	useEffect(() => {
 		document.title = 'Instagram';
 	}, []);
-	return (
+	return ( 
 		<div className="App">
 			<Router>
 				<DataProvider>
@@ -27,10 +29,10 @@ function App() {
 							<Header />
 							<Switch>
 								<Route exact path="/">
-									xxxx
+									<HomePage />
 								</Route>
 								<Route path="/:id">
-									profile
+									<ProfilePage />
 								</Route>
 							</Switch>
 						</RouteWithAuth>
