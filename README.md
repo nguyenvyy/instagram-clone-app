@@ -4,6 +4,12 @@
 
 - Install Node
 
+## Using
+
+- react
+- react-router-dom
+- antd
+
 ## Installation
 
 Use the package manager [npm](https://www.npmjs.com/) to install dependencies.
