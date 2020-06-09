@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './AddPostModal.css';
 import { Button, message, Input, Upload } from 'antd';
 import { CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { checkIsImage, getBase64, beforeUpload } from '../../utils';
-import { messages, status } from '../../config/globals';
+import { getBase64, beforeUpload } from '../../utils';
+import { messages, status, env } from '../../config/globals';
 import { sendNewPost } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch'
 import { addPosts } from '../../store/actions';
@@ -34,13 +34,18 @@ export const AddPostModal = ({ close, user, token }) => {
 	const onChangePost = (key, value) => setPost({ ...post, [key]: value });
 
 	const handleChangeImageUrl = (info) => {
-		if (info.file.status === 'uploading') {
+		const {status, originFileObj} = info.file
+		if (status === 'error') {
+			setLoading({ ...loading, upload: false });
+			message.error('upload ảnh thất bại')
+		}
+		if (status === 'uploading') {
 			setLoading({ ...loading, upload: true });
 			return;
 		}
-		if (info.file.status === 'done') {
+		if (status === 'done') {
 			// Get this url from response in real world.
-			getBase64(info.file.originFileObj, (imageUrl) => {
+			getBase64(originFileObj, (imageUrl) => {
 				onChangePost('imageUrl', imageUrl);
 				setLoading({ ...loading, upload: false });
 			});
@@ -83,8 +88,8 @@ export const AddPostModal = ({ close, user, token }) => {
                             name="avatar"
                             listType="picture-card"
                             className="avatar-uploader"
-                            showUploadList={false}
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                            showUploadList={false} 
+                            action={`${env.SERVER_URL}/mock-upload`} 
                             beforeUpload={(file) => beforeUpload(file, message)}
                             onChange={handleChangeImageUrl}
                         >

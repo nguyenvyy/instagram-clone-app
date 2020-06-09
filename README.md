@@ -24,6 +24,10 @@ npm i
 npm start
 ```
 
+## Demo
+
+[link](https://instagram-clone-d083b.web.app)
+
 ## Back-end
 
 [github](https://github.com/learn-in-codersx/instagram-clone-be.git)

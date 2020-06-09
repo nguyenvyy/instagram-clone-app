@@ -6,7 +6,7 @@ import { convertDateToTimeFromNow } from '../../utils';
 
 export const Comment = ({comment}) => {
     const {content, createdAt, byUser} = comment
-    const { avatarUrl = UserDefault, username, _id: authorId } = byUser || {
+    const { avatarUrl = UserDefault, username } = byUser || {
 		avatarUrl: UserDefault,
 		username: <Tag color="#f50">Đã có lỗi trong quá trình xảy ra</Tag>
     };

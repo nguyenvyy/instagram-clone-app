@@ -11,7 +11,7 @@ import { convertDateToTimeFromNow } from '../../utils';
 
 export const NotificationItem = ({ notification }) => {
 	const { action, createdAt, byUser } = notification;
-	const { avatarUrl = UserDefault, username, _id: authorId } = byUser || {
+	const { avatarUrl = UserDefault, username } = byUser || {
 		avatarUrl: UserDefault,
 		username: <Tag color="#f50">Đã có lỗi trong quá trình xảy ra</Tag>
 	};
