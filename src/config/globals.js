@@ -1,7 +1,9 @@
 export const env = {
 	NODE_ENV: process.env.NODE_ENV,
-	SERVER_URL: process.env.REACT_APP_SERVER_URL || 'http://localhost:8080/api/v1',
-	COOKIE_KEY: process.env.REACT_APP_COOKIE_KEY || 'instagram-cookie'
+	SERVER_URL: process.env.NODE_ENV === 'production' ? 
+		process.env.REACT_APP_SERVER_URL : 'http://localhost:8080/api/v1',
+	COOKIE_KEY: process.env.NODE_ENV === 'production' ? 
+	process.env.REACT_APP_COOKIE_KEY : 'instagram-cookie',
 };
 
 export const status = {
