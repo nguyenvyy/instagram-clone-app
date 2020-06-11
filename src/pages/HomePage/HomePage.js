@@ -3,7 +3,7 @@ import './HomePage.css';
 import { useStore } from '../../hooks/useStore';
 import { FitLoading } from '../../components/common/FitLoading';
 import { Alert, message } from 'antd';
-import { Post } from '../../components/Post/Post';
+import { MemoizedPost } from '../../components/Post/Post';
 import { getPosts, getLengthPosts } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch';
 import { startLoadPost, endLoadPost, addPosts, setLength } from '../../store/actions';
@@ -104,10 +104,10 @@ export const HomePage = () => {
 	return (
 		<div className="home-page container">
 			<div className="post-list">
-				{items.map((post, index) => (
-					<div key={post._id + index} className="list-item d-flex justify-center">
-						<Post 
-							post={post} index={index}
+				{items.map((post) => (
+					<div key={post._id} className="list-item d-flex justify-center">
+						<MemoizedPost 
+							post={post} 
 							token={token}
 							user={user}
 							dispatch={dispatch}

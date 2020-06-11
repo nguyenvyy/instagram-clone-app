@@ -67,11 +67,24 @@ export const reducer = (state, action) => {
             }}
         }
         case types.SET_LIKED_POST: {
-            let {index, _id, likedPost} = action.payload
-            if(typeof index !== 'number') {
-                index = state.postItems.findIndex(post => post._id === _id)
+            let {index, _id} = action.payload
+            if(typeof index !== 'number' || Number.isNaN(index)) {
+                index = state.posts.items.findIndex(post => post._id === _id)
             }
             const postItems = state.posts.items.slice()
+            const prePost = postItems[index]
+            const likedPost = {...prePost, canLike: false, numLikes: prePost.numLikes + 1}
+            postItems.splice(index, 1, likedPost)
+            return {...state, posts: {...state.posts, items: postItems}}
+        }
+        case types.SET_UNLIKE_POST: {
+            let {index, _id} = action.payload
+            if(typeof index !== 'number' || Number.isNaN(index)) {
+                index = state.posts.items.findIndex(post => post._id === _id)
+            }
+            const postItems = state.posts.items.slice()
+            const prePost = postItems[index]
+            const likedPost = {...prePost, canLike: true, numLikes: prePost.numLikes - 1}
             postItems.splice(index, 1, likedPost)
             return {...state, posts: {...state.posts, items: postItems}}
         }

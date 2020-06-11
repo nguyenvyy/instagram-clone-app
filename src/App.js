@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import 'antd/dist/antd.css';
@@ -11,9 +11,6 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 
 function App() {
-	useEffect(() => {
-		document.title = 'Instagram';
-	}, []);
 	return ( 
 		<div className="App">
 			<Router>

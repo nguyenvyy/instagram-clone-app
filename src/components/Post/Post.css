@@ -38,25 +38,28 @@
 }
 
 .post .card__img img {
-	max-width: 100%;
-	height: auto;
-	max-height: 80vh;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
 }
 
 .post .card__content {
-    padding: 0 16px;
+    padding: 5px 16px;
     border-top: 0.5px solid #dbdbdb;
 
 }
 
 .like-bar .like-icon {
-	font-size: 20px;
+	font-size: 24px;
 	margin-right: 10px;
+}
+.like-bar .like-icon.unlike {
+	color: #ed4956;
 }
 
 .like-bar .num-likes {
 	font-weight: 700;
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 .post .caption span {
 	font-weight: 500;

@@ -45,17 +45,22 @@ export const getPosts = (skip, limit, token) => axios({
 }).then(res => res.data.posts)
 .catch(error => {throw new RequestException(status.error, messages.post.get.failed)})
 
-export const likePost = (_id, likedUserId, token) => axios({
+export const likePost = (_id, token) => axios({
     method: 'patch',
-    url: `${pathname}/${_id}`,
+    url: `${pathname}/${_id}/like`,
     headers: {
         Authorization : `Bearer ${token}`
-    },
-    data: {
-        likedUserId
     }
-}).then(res => res.data.post)
-.catch(_ => {throw new RequestException(status.error, messages.post.like.failed)})
+}).then(_ => _id)
+.catch(_ => _id)
+export const unlikePost = (_id, token) => axios({
+    method: 'patch',
+    url: `${pathname}/${_id}/unlike`,
+    headers: {
+        Authorization : `Bearer ${token}`
+    }
+}).then(_ => _id)
+.catch(_ => _id)
 
 
 export const getCommentsOfPost = (skip, limit, postId, token) => axios({

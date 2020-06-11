@@ -31,7 +31,6 @@ export const SignInPage = () => {
 			.then((res) => {
 				setLoading(false);
 				const { token, user } = res;
-				message[res.status](res.message);
 				dispatch(addToken(token));
 				dispatch(addUser(user));
 				CookieService.setCookie(env.COOKIE_KEY, token)
