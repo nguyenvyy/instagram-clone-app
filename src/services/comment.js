@@ -4,7 +4,7 @@ import {status, messages} from '../config/globals'
 export const pathname = '/comments'
 
 export const sendNewComment = (
-    { byUser, postId, content, postAuthor },
+    comment,
     token
 ) => axios({
     method: 'post',
@@ -13,7 +13,24 @@ export const sendNewComment = (
         Authorization: `Bearer ${token}`
     },
     data: {
-        byUser, postId, content, postAuthor
+        ...comment
     }
 }).then(res => res.data.comment)
 .catch(_ => {throw new RequestException(status.error, messages.comment.add.false)})
+
+export const likeComment = (_id, token) => axios({
+    method: 'patch',
+    url: `${pathname}/${_id}/like`,
+    headers: {
+        Authorization : `Bearer ${token}`
+    }
+}).then(_ => _id)
+.catch(_ => _id)
+export const unlikeComment = (_id, token) => axios({
+    method: 'patch',
+    url: `${pathname}/${_id}/unlike`,
+    headers: {
+        Authorization : `Bearer ${token}`
+    }
+}).then(_ => _id)
+.catch(_ => _id)
