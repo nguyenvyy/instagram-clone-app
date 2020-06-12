@@ -20,12 +20,16 @@ export function Comment({
     const time = convertDateToTimeFromNow(createdAt, false)
     const [comment, setComment] = useState({canLike, numLikes})
     const onLikeComment = () => {
-        setComment({canLike: false, numLikes: comment.numLikes + 1})
-        likeComment(_id, token)
+        setComment(({numLikes}) => ({canLike: false, numLikes: numLikes + 1}))
+        likeComment(_id, token).catch(_ => {
+            setComment({canLike: true, numLikes: comment.numLikes - 1})
+        })
     }
     const onUnlikeComment = () => {
         setComment({canLike: true, numLikes: comment.numLikes - 1})
-        unlikeComment(_id, token)
+        unlikeComment(_id, token).catch(_ => {
+            setComment(({numLikes}) => ({canLike: false, numLikes: numLikes + 1}))
+        })
     }
     const onClickReply = () => {
         if(commentInputRef && commentInputRef.focus) {
@@ -80,7 +84,7 @@ export function Comment({
                     </div>
                 )}
             </div>
-            <span className={`like-icon ${comment.canLike ? '' : 'unlike'} pointer`}>
+            <span className={`like-icon ${comment.canLike ? '' : 'liked'} pointer`}>
                 {comment.canLike ? (
                     <HeartOutlined onClick={onLikeComment} />
                 ) : (

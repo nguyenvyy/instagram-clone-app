@@ -3,11 +3,16 @@ import './AddPostModal.css';
 import { Button, message, Input, Upload } from 'antd';
 import { CloseOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { getBase64, beforeUpload } from '../../utils';
-import { messages, status, env } from '../../config/globals';
+import { messages, status } from '../../config/globals';
 import { sendNewPost } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch'
 import { addPosts } from '../../store/actions';
 
+const dummyRequest = ({ onSuccess }) => {
+	setTimeout(() => {
+		onSuccess("ok")
+	}, 0);
+  };
 
 
 export const AddPostModal = ({ close, user, token }) => {
@@ -33,8 +38,9 @@ export const AddPostModal = ({ close, user, token }) => {
 	);
 	const onChangePost = (key, value) => setPost({ ...post, [key]: value });
 
-	const handleChangeImageUrl = (info) => {
+	const handleChangeImageUrl = (info, b, c) => {
 		const {status, originFileObj} = info.file
+		console.log(status)
 		if (status === 'error') {
 			setLoading({ ...loading, upload: false });
 			message.error('upload ảnh thất bại')
@@ -71,7 +77,7 @@ export const AddPostModal = ({ close, user, token }) => {
             {loading.upload ? <LoadingOutlined /> : <PlusOutlined />}
             <div className="ant-upload-text">Upload</div>
         </div>
-    );
+	);
     
 	return (
 		<div className="add-post-modal d-flex-center">
@@ -88,8 +94,8 @@ export const AddPostModal = ({ close, user, token }) => {
                             name="avatar"
                             listType="picture-card"
                             className="avatar-uploader"
-                            showUploadList={false} 
-                            action={`${env.SERVER_URL}/mock-upload`} 
+							showUploadList={false} 
+							customRequest={dummyRequest}
                             beforeUpload={(file) => beforeUpload(file, message)}
                             onChange={handleChangeImageUrl}
                         >

@@ -3,6 +3,7 @@ import './CommentBar.css';
 import { Input, Button, message } from 'antd';
 import { sendNewComment } from '../../services/comment';
 import { status, messages } from '../../config/globals';
+import { useMemo } from 'react';
 export function CommentBar ({
 	commentInputRef, 
     authorId, userId, 
@@ -23,6 +24,7 @@ export function CommentBar ({
 			comment.replyToCommentId = replyToCommentId
 		}
         sendNewComment(comment, token).then(comment => {
+			console.log(comment)
             addCommentInLocal(comment)
             setContent('')
         }).catch(({ status: statusError = status.error, message: messageError = messages.action.failed }) => {
@@ -30,7 +32,7 @@ export function CommentBar ({
             message[statusError](messageError);
         }).finally(_ => setLoading(false));
 	};
-	let timeout
+	let timeout = useMemo(() => null, [])
 	const onBlur = () => {
 		clearTimeout(timeout)
 		timeout = setTimeout(() => {

@@ -7,9 +7,11 @@ import { Button,
  } from 'antd';
 import './ProfilePage.css';
 import { useDispatch } from '../../hooks/useDispatch';
-import { clearAuth } from '../../store/actions';
+import { reset } from '../../store/actions';
 import { useRouter } from '../../hooks/useRouter';
 import { useStore } from '../../hooks/useStore';
+import { removeCookie } from '../../services/storage';
+import { env } from '../../config/globals';
 // import { beforeUpload, getBase64 } from '../../utils';
 // import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 
@@ -19,7 +21,9 @@ export const ProfilePage = () => {
     const router = useRouter();
     // const [ loading, setLoading ] = useState({ upload: false, request: false });
 	const signOut = () => {
-		dispatch(clearAuth());
+		dispatch(reset());
+		removeCookie(env.COOKIE_KEY)
+
 	};
 	useEffect(
 		() => {

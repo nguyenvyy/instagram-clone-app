@@ -24,13 +24,11 @@ export const likeComment = (_id, token) => axios({
     headers: {
         Authorization : `Bearer ${token}`
     }
-}).then(_ => _id)
-.catch(_ => _id)
+})
 export const unlikeComment = (_id, token) => axios({
     method: 'patch',
     url: `${pathname}/${_id}/unlike`,
     headers: {
         Authorization : `Bearer ${token}`
     }
-}).then(_ => _id)
-.catch(_ => _id)
+})

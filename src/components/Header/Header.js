@@ -18,22 +18,21 @@ import { useStore } from '../../hooks/useStore';
 import { NotificationFrame } from '../NotificationFrame/NotificationFrame';
 
 export const Header = () => {
-	const {auth: {user, token}} = useStore()
+	const { auth: { user, token } } = useStore()
 	const router = useRouter();
-	const [ currentPath, setCurrentPath ] = useState('/');
+	const [currentPath, setCurrentPath] = useState('/');
 	const onChangePath = (path) => setCurrentPath(path);
 	useEffect(
 		() => {
 			setCurrentPath(router.pathname);
 		},
-		[ router.pathname ]
+		[router.pathname]
 	);
 	const closeModal = () => {
 		setCurrentPath(router.pathname)
 	}
 	return (
-		<>
-			<header className="header ">
+		<header className="header ">
 			<div className="container d-flex justify-between align-items-center">
 				<img className="logo" src={Logo} alt="logo" />
 				<div className="search">
@@ -46,39 +45,39 @@ export const Header = () => {
 								{currentPath === '/' ? (
 									<HomeFilled className="menu-icon" />
 								) : (
-									<HomeOutlined  
-									onClick={() => onChangePath('/')} 
-									className="menu-icon" />
-								)}
+										<HomeOutlined
+											onClick={() => onChangePath('/')}
+											className="menu-icon" />
+									)}
 							</NavLink>
 						</li>
 						<li>
-							<div  className="d-flex-center pointer">
+							<div className="d-flex-center pointer">
 								{currentPath === '/new-post' ? (
 									<PlusSquareFilled className="menu-icon" />
 								) : (
-									<PlusSquareOutlined
-									onClick={() => onChangePath('/new-post')} 
-									className="menu-icon" />
-								)}
+										<PlusSquareOutlined
+											onClick={() => onChangePath('/new-post')}
+											className="menu-icon" />
+									)}
 							</div>
 						</li>
 						<li>
 							<div className="d-flex-center  notification">
 								{currentPath === '/notifications' ? (
 									<>
-										<HeartFilled 
-										onClick={() => onChangePath(router.pathname)}
-										className="menu-icon pointer"  />
+										<HeartFilled
+											onClick={() => onChangePath(router.pathname)}
+											className="menu-icon pointer" />
 										<div className="notification-frame">
 											<NotificationFrame />
 										</div>
 									</>
 								) : (
-									<HeartOutlined
-									onClick={() => onChangePath('/notifications')}
-									className="menu-icon pointer" />
-								)}
+										<HeartOutlined
+											onClick={() => onChangePath('/notifications')}
+											className="menu-icon pointer" />
+									)}
 							</div>
 						</li>
 						<li>
@@ -94,11 +93,10 @@ export const Header = () => {
 					</ul>
 				</div>
 			</div>
-		</header>
 			<div className="modal-area">
-				{currentPath === '/new-post' && 
-				<AddPostModal user={user} token={token} close={closeModal} />}
-				</div>
-		</>
+				{currentPath === '/new-post' &&
+					<AddPostModal user={user} token={token} close={closeModal} />}
+			</div>
+		</header>
 	);
 };

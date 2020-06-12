@@ -1,8 +1,7 @@
 import { types } from "./actions"
 import { initState } from "./DataProvider"
 import { decode } from 'jsonwebtoken'
-import { removeCookie } from "../services/storage"
-import { env } from "../config/globals"
+
 export const reducer = (state, action) => {
     switch (action.type) {
         case types.ADD_TOKEN: {
@@ -17,7 +16,6 @@ export const reducer = (state, action) => {
             return {...state, auth}
         }
         case types.CLEAR_AUTH: {
-            removeCookie(env.COOKIE_KEY)
             return {...state, auth: initState.auth}
         }
         case types.START_LOAD_POSTS: {

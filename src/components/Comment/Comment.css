@@ -36,7 +36,7 @@
     top: 0;
     right: 0;
 }
-.comment .like-icon.unlike {
+.comment .like-icon.liked {
 	color: #ed4956;
 }
 .comment .reply-comments-area {

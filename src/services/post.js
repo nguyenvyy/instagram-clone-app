@@ -51,16 +51,14 @@ export const likePost = (_id, token) => axios({
     headers: {
         Authorization : `Bearer ${token}`
     }
-}).then(_ => _id)
-.catch(_ => _id)
+})
 export const unlikePost = (_id, token) => axios({
     method: 'patch',
     url: `${pathname}/${_id}/unlike`,
     headers: {
         Authorization : `Bearer ${token}`
     }
-}).then(_ => _id)
-.catch(_ => _id)
+})
 
 
 export const getCommentsOfPost = (skip, limit, postId, token) => axios({

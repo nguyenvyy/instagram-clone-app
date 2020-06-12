@@ -91,12 +91,19 @@ export function Post({ post, token, user, dispatch }) {
 	const hiddenComment = () => setIsShowComment(false);
 
 	const onLikePost = () => {
-		likePost(_id, token)
 		dispatch(setLikedPost(_id));
+		likePost(_id, token)
+			.catch(_ => {
+				dispatch(setUnlikePost(_id));
+			})
+		
 	};
 	const onUnlikePost = () => {
-		unlikePost(_id, token)
 		dispatch(setUnlikePost(_id));
+		unlikePost(_id, token)
+			.catch(_ => {
+				dispatch(setLikedPost(_id));
+			})
 	};
 
 
@@ -119,7 +126,7 @@ export function Post({ post, token, user, dispatch }) {
 				</div>
 				<div className="card__content">
 					<div className="like-bar d-flex align-items-center">
-						<span className={`like-icon ${canLike ? '' : 'unlike'} pointer`}>
+						<span className={`like-icon ${canLike ? '' : 'liked'} pointer`}>
 							{canLike ? (
 								<HeartOutlined   onClick={onLikePost} />
 							) : (
