@@ -1,5 +1,7 @@
 # Instagram clone (FE)
 
+Clone Instagram with MERN Stack
+
 ## Requirements
 
 - Install Node
@@ -9,6 +11,13 @@
 - react
 - react-router-dom
 - antd
+
+## Feature
+
+- Add post
+- like post, comment
+- reply to comment
+- notification
 
 ## Installation
 
@@ -30,4 +39,4 @@ npm start
 
 ## Back-end
 
-[github](https://github.com/learn-in-codersx/instagram-clone-be.git)
+[github](https://github.com/anhhungcusa/instagram-clone-api)
