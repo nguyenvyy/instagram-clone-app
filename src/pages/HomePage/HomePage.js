@@ -2,18 +2,22 @@ import React, { useEffect, useCallback, useState } from 'react';
 import './HomePage.css';
 import { useStore } from '../../hooks/useStore';
 import { FitLoading } from '../../components/common/FitLoading';
-import { Alert, message } from 'antd';
+import { Alert, message, Row, Col, Grid } from 'antd';
 import { MemoizedPost } from '../../components/Post/Post';
 import { getPosts, getLengthPosts } from '../../services/post';
 import { useDispatch } from '../../hooks/useDispatch';
 import { startLoadPost, endLoadPost, addPosts, setLength } from '../../store/actions';
 import { status, messages } from '../../config/globals';
 import { debounce } from '../../utils';
+import UserDefault from '../../assets/images/user-icon.jpg';
+
 export const HomePage = () => {
+	const {xxl, xl, lg} = Grid.useBreakpoint()
 	const dispatch = useDispatch();
 	const { posts: { items, loading, pagination, initLoading }, auth: { token, user } } = useStore();
+	const { avatarUrl = UserDefault, username, fullname } = user || {}
 	const { length, skip, limit } = pagination;
-	const [ isScrollBottom, setIsScrollBottom ] = useState(false);
+	const [isScrollBottom, setIsScrollBottom] = useState(false);
 	const onScrollToBottom = useCallback((e) => {
 		// detect scroll to bottom
 		const current = window.innerHeight + window.scrollY
@@ -35,14 +39,14 @@ export const HomePage = () => {
 				document.removeEventListener('scroll', onScrollToBottom);
 			};
 		},
-		[ onScrollToBottom ]
+		[onScrollToBottom]
 	);
 
-		useEffect(
+	useEffect(
 		() => {
-			 getLengthPosts(token).then((length) => {
-                dispatch(setLength(length));
-            });
+			getLengthPosts(token).then((length) => {
+				dispatch(setLength(length));
+			});
 			// start load posts
 			dispatch(startLoadPost());
 			// get posts
@@ -73,7 +77,7 @@ export const HomePage = () => {
 				})
 				.finally((_) => dispatch(endLoadPost()));
 		}, 200),
-		[ dispatch, length, limit, loading, skip, token ]
+		[dispatch, length, limit, loading, skip, token]
 	);
 
 	useEffect(
@@ -83,7 +87,7 @@ export const HomePage = () => {
 			}
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[ isScrollBottom ]
+		[isScrollBottom]
 	);
 
 	if (initLoading) {
@@ -102,20 +106,45 @@ export const HomePage = () => {
 		);
 	}
 	return (
-		<div className="home-page container">
-			<div className="post-list">
-				{items.map((post) => (
-					<div key={post._id} className="list-item d-flex justify-center">
-						<MemoizedPost 
-							post={post} 
-							token={token}
-							user={user}
-							dispatch={dispatch}
+		<div className="home-page container d-flex justify-center">
+			<div>
+				<div className='follower-list'>
+
+				</div>
+				<div className="post-list">
+					{items.map((post) => (
+						<div key={post._id} className="list-item d-flex justify-center">
+							<MemoizedPost
+								post={post}
+								token={token}
+								user={user}
+								dispatch={dispatch}
 							/>
-					</div>
-				))}
+						</div>
+					))}
+				</div>
+				<div className="loading-area">{loading && <FitLoading fontSize="25px" />}</div>
 			</div>
-			<div className="loading-area">{loading && <FitLoading fontSize="25px" />}</div>
+			{(xxl || xl) && user && (
+				<div className="follow-panel">
+					<div className="user-area d-flex align-items-center">
+						<img src={avatarUrl} alt="avatar-user"/>
+						<div className="user-info d-flex">
+							<b>{username}</b>
+							<span>{fullname}</span>
+						</div>
+					</div>
+					<div className="d-flex justify-between">
+						<b>
+							<span>
+								Gợi ý cho bạn
+							</span>
+						</b>
+						<b>Xem tất cả</b>
+					</div>
+				</div>
+			)}
+
 		</div>
 	);
 };

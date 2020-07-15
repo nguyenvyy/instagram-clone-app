@@ -24,7 +24,6 @@ export function CommentBar ({
 			comment.replyToCommentId = replyToCommentId
 		}
         sendNewComment(comment, token).then(comment => {
-			console.log(comment)
             addCommentInLocal(comment)
             setContent('')
         }).catch(({ status: statusError = status.error, message: messageError = messages.action.failed }) => {

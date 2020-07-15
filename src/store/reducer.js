@@ -1,6 +1,6 @@
 import { types } from "./actions"
 import { initState } from "./DataProvider"
-import { decode } from 'jsonwebtoken'
+import  decode  from 'jwt-decode'
 
 export const reducer = (state, action) => {
     switch (action.type) {

@@ -3,6 +3,7 @@ import { reducer } from './reducer';
 import { getCookie } from '../services/storage';
 import { env } from '../config/globals';
 import { addToken } from './actions';
+import decode from 'jwt-decode'
 
 export const DataContext = createContext();
 

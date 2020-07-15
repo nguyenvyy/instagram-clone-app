@@ -48,7 +48,7 @@ export const SignUpPage = () => {
 							<Input className="form-input" placeholder="Email" />
 						</Form.Item>
 						<Form.Item
-							name="fullName"
+							name="fullname"
 							rules={[ { required: true, message: 'Hãy nhập tên đầy đủ của bạn!' } ]}
 							hasFeedback
 						>

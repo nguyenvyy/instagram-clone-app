@@ -2,7 +2,7 @@ import { axios } from '../config/axios';
 import { status, messages } from "../config/globals"
 import { RequestException } from "../utils"
 const pathname = '/auth'
-export const registerAccount = async ({email, username, fullName, password}) => {
+export const registerAccount = async ({email, username, fullname, password}) => {
     try {
         await axios({
             method: 'post',
@@ -10,7 +10,7 @@ export const registerAccount = async ({email, username, fullName, password}) => 
             data: {
                 email,
                 username,
-                fullName,
+                fullname,
                 password
             }
         })
